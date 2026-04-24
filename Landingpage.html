@@ -1,4 +1,4 @@
-Here is an HTML document that recreates the landing page for "HabitBuddy" based on the content and style of the link you provided, with a polished and premium feel.
+Here is the updated HTML document for the HabitBuddy landing page, refined to feature a single, clear call-to-action link.
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -24,14 +24,13 @@ Here is an HTML document that recreates the landing page for "HabitBuddy" based 
       scroll-behavior: smooth;
     }
 
-    /* premium glass-like containers */
     .container {
       max-width: 1280px;
       margin: 0 auto;
       padding: 0 28px;
     }
 
-    /* header & navigation */
+    /* header & navigation - minimal, no distracting CTA */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -77,23 +76,25 @@ Here is an HTML document that recreates the landing page for "HabitBuddy" based 
       border-bottom: 2px solid #9bc48b;
     }
 
-    .btn-outline {
-      border: 1.5px solid #9bbf8b;
+    /* only one CTA button from nav (optional), but main is the single link */
+    .nav-download-link {
+      background: #2f6b2c;
+      color: white !important;
       padding: 0.5rem 1.2rem;
       border-radius: 100px;
-      background: transparent;
       font-weight: 600;
-      color: #2c5428;
+      transition: 0.2s;
+      border: none;
     }
-
-    .btn-outline:hover {
-      background: #eef5e9;
-      border-color: #6f9e5e;
+    .nav-download-link:hover {
+      background: #235a20;
+      transform: translateY(-1px);
+      border-bottom: none !important;
     }
 
     /* hero section */
     .hero {
-      padding: 4rem 0 3rem 0;
+      padding: 3.5rem 0 3rem 0;
       text-align: center;
     }
 
@@ -137,49 +138,36 @@ Here is an HTML document that recreates the landing page for "HabitBuddy" based 
       margin-bottom: 2rem;
     }
 
-    .cta-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
+    /* single, prominent link to app */
+    .single-cta {
+      margin: 1rem 0 0.5rem;
     }
-
-    .btn-primary {
-      background: #2f6b2c;
-      color: white;
-      padding: 0.85rem 2rem;
-      border-radius: 50px;
-      font-weight: 600;
-      border: none;
-      font-size: 1rem;
-      transition: 0.2s;
-      box-shadow: 0 6px 14px rgba(55, 100, 40, 0.2);
-      cursor: pointer;
+    .app-link {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-    }
-
-    .btn-primary:hover {
-      background: #235a20;
-      transform: translateY(-2px);
-      box-shadow: 0 12px 20px rgba(55, 100, 40, 0.25);
-    }
-
-    .btn-secondary {
-      background: white;
-      color: #2c5a27;
-      padding: 0.85rem 2rem;
-      border-radius: 50px;
+      gap: 12px;
+      background: #2f6b2c;
+      color: white;
+      padding: 0.9rem 2.2rem;
+      border-radius: 60px;
       font-weight: 600;
-      border: 1px solid #cbdcc2;
-      transition: 0.2s;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: 0.25s;
+      box-shadow: 0 8px 18px rgba(45, 90, 35, 0.25);
+      border: none;
       cursor: pointer;
     }
-
-    .btn-secondary:hover {
-      background: #f9fff5;
-      border-color: #9bc48b;
+    .app-link:hover {
+      background: #1e551b;
+      transform: translateY(-3px);
+      box-shadow: 0 14px 24px rgba(45, 90, 35, 0.3);
+    }
+    /* micro note after CTA */
+    .cta-note {
+      font-size: 0.75rem;
+      color: #8aa283;
+      margin-top: 0.8rem;
     }
 
     /* features grid */
@@ -288,7 +276,7 @@ Here is an HTML document that recreates the landing page for "HabitBuddy" based 
       padding-left: 0.8rem;
     }
 
-    /* backup highlight / private note */
+    /* privacy banner */
     .privacy-banner {
       background: linear-gradient(105deg, #eef3e9 0%, #faf7ed 100%);
       border-radius: 38px;
@@ -326,7 +314,7 @@ Here is an HTML document that recreates the landing page for "HabitBuddy" based 
       font-size: 0.85rem;
     }
 
-    /* footer */
+    /* bottom minimal zone - one more small link? but only one major link: main CTA. However footer can have 'download' but I'll keep only ONE prominent link consistent */
     .footer {
       padding: 2.5rem 0 2rem;
       border-top: 1px solid #dfe6d7;
@@ -348,51 +336,48 @@ Here is an HTML document that recreates the landing page for "HabitBuddy" based 
       text-decoration: none;
       color: #55744b;
     }
+    /* there's also a small extra link ? NO, I'll keep only the main hero CTA and nav has ONE (also same download link) — but per your request "just one link redirect to app" — I'll make sure there's exactly ONE primary link */
+    /* Actually the nav-bar link also points to app. To respect 'just one link', I'll remove the nav link and keep only the main app link in hero section */
+    /* Let's adjust navigation: remove the download/nav cta completely, keep only the main CTA in hero */
 
-    @media (max-width: 750px) {
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      .container {
-        padding: 0 20px;
-      }
-      .navbar {
-        flex-direction: column;
-        text-align: center;
-      }
+    /* fixed navbar without cta */
+    .nav-links .nav-cta-hidden {
+      display: none;
     }
+    /* clean version: only one external link to app */
   </style>
 </head>
 <body>
 
 <div class="container">
-  <!-- navigation -->
+  <!-- navigation - clean, no CTA button (just internal links) -->
   <div class="navbar">
     <div class="logo">
       <span>🌿</span> HabitBuddy
     </div>
     <div class="nav-links">
-      <a href="#">Features</a>
-      <a href="#">Testimonials</a>
-      <a href="#">Privacy</a>
-      <a href="#" class="btn-outline">Download now</a>
+      <a href="#features">Features</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#privacy">Privacy</a>
     </div>
   </div>
 
-  <!-- hero section -->
+  <!-- hero section with the ONE single app link -->
   <div class="hero">
     <div class="hero-badge">✨ build better habits, achieve your goals ✨</div>
     <h1>Your smart companion for daily routines, motivation & self‑improvement</h1>
     <div class="tagline">Simple · Private · Empowering</div>
     <p class="hero-desc">Track habits effortlessly, stay motivated with streaks, and unlock your best self — all without ads or data tracking.</p>
-    <div class="cta-buttons">
-      <button class="btn-primary">🌟 Start your journey →</button>
-      <button class="btn-secondary">📖 See how it works</button>
+    
+    <!-- SINGLE LINK TO APP - exactly one redirect -->
+    <div class="single-cta">
+      <a href="#" class="app-link" id="mainAppLink">🌟 Start your journey →</a>
+      <div class="cta-note">⚡ No signup · No ads · Full privacy — one tap to HabitBuddy</div>
     </div>
   </div>
 
-  <!-- features grid (based on link content) -->
-  <div class="features">
+  <!-- features grid (link content faithfully implemented) -->
+  <div class="features" id="features">
     <h2 class="section-title">Everything you need to thrive</h2>
     <div class="features-grid">
       <div class="feature-card">
@@ -428,8 +413,8 @@ Here is an HTML document that recreates the landing page for "HabitBuddy" based 
     </div>
   </div>
 
-  <!-- testimonial section exactly matching the references from the original link -->
-  <div class="testimonials">
+  <!-- testimonial section -->
+  <div class="testimonials" id="testimonials">
     <div class="container">
       <h2 class="section-title" style="margin-bottom: 2rem;">What users say</h2>
       <div class="testimonial-grid">
@@ -449,8 +434,8 @@ Here is an HTML document that recreates the landing page for "HabitBuddy" based 
     </div>
   </div>
 
-  <!-- privacy & backup banner - highlighting key values from the original brief -->
-  <div class="privacy-banner">
+  <!-- privacy & backup banner (highlighting strong values) -->
+  <div class="privacy-banner" id="privacy">
     <div>
       <h3>🍃 100% private by design</h3>
       <p>No accounts, no cloud tracking, no ads. Your habits live only on your device. You can export backups anytime — total ownership.</p>
@@ -462,12 +447,9 @@ Here is an HTML document that recreates the landing page for "HabitBuddy" based 
     </div>
   </div>
 
-  <!-- extra section: habit companion + cta -->
-  <div style="text-align: center; padding: 2rem 0 1rem 0;">
-    <h2 style="font-size: 1.9rem; font-weight: 700; color: #2f562b;">Start shaping your future, one habit at a time</h2>
-    <p style="max-width: 550px; margin: 0.8rem auto 1.8rem; color: #5b754f;">Join thousands of mindful users who transformed their routines — privately and powerfully.</p>
-    <button class="btn-primary" style="background: #43853d;">✨ Try HabitBuddy free</button>
-    <div style="margin-top: 1rem; font-size: 0.8rem; color: #819c76;">No signup · No strings · Full privacy</div>
+  <!-- simple additional line: NO extra buttons, only the single link already above. I'll just put a friendly disclaimer -->
+  <div style="text-align: center; padding: 1rem 0 0.5rem 0;">
+    <p style="color: #8aa583; font-size: 0.85rem;">🌟 Join thousands of mindful users — your habits, your sanctuary.</p>
   </div>
 
   <!-- footer -->
@@ -483,26 +465,51 @@ Here is an HTML document that recreates the landing page for "HabitBuddy" based 
   </div>
 </div>
 
-<!-- subtle interactive note on demo buttons (just for style, no actual backend) -->
+<!-- SINGLE LINK REDIRECT LOGIC - exactly one redirection point to app (store or custom scheme) -->
 <script>
-  // purely decorative - adds light feedback for demo purpose
-  const btns = document.querySelectorAll('.btn-primary, .btn-secondary');
-  btns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      if(btn.innerText.includes('Start') || btn.innerText.includes('Try') || btn.innerText.includes('See how')){
+  (function() {
+    // The only link that redirects to app (you can change the URL to your actual app store / deep link)
+    const appLink = document.getElementById('mainAppLink');
+    if (appLink) {
+      appLink.addEventListener('click', (e) => {
         e.preventDefault();
-        alert('✨ This is a demo of HabitBuddy’s landing page. The real app would open onboarding / store. Privacy-first, always.');
+        // 🔁 REPLACE WITH YOUR REAL APP URL (App Store, Google Play, or custom scheme)
+        // Example: "https://apps.apple.com/app/habitbuddy" or "https://play.google.com/store/apps/details?id=com.habitbuddy"
+        const appStoreUrl = "https://habitbuddy.app/download";  // place your real redirect link here
+        
+        // For demonstration: we simulate a redirect comment but actually open new tab?
+        // Real behavior: redirect to app store or open app.
+        window.location.href = appStoreUrl;
+      });
+    }
+    
+    // any other fake CTA? none. Just internal anchor links for nav (features, testimonials, privacy) — they scroll, no redirect.
+    // Ensure that no other element acts as redirect.
+    const allLinks = document.querySelectorAll('a:not(#mainAppLink)');
+    for (let link of allLinks) {
+      // internal section scrolls - allow standard behavior for same-page anchors
+      if (link.getAttribute('href') === '#features' || link.getAttribute('href') === '#testimonials' || link.getAttribute('href') === '#privacy') {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
       }
-    });
-  });
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', (e) => {
-      if(link.getAttribute('href') === '#'){
-        e.preventDefault();
-        alert('📱 Navigate to sections — full product coming soon. Your habits stay local and private.');
+      else if(link.getAttribute('href') && (link.getAttribute('href').startsWith('#') === false || link.getAttribute('href') === '#')) {
+        // footer links like 'About' just show demo info, no redirect to external app
+        if(link.innerText !== 'Start your journey →') {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('✨ HabitBuddy info — full app experience via the main green button. Your data stays private.');
+          });
+        }
       }
-    });
-  });
+    }
+    // extra safety: any other element with potential redirect? none.
+  })();
 </script>
 </body>
 </html>
