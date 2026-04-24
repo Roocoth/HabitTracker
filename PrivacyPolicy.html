@@ -1,0 +1,394 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>HabitBuddy · Privacy with a human touch</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #f7f5f0 0%, #efede7 100%);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif;
+      color: #1e2a2e;
+      line-height: 1.45;
+      padding: 2rem 1.5rem;
+    }
+
+    /* premium glass + soft card */
+    .privacy-card {
+      max-width: 880px;
+      margin: 1rem auto;
+      background: rgba(255, 255, 245, 0.96);
+      backdrop-filter: blur(0px);
+      border-radius: 48px;
+      box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.02);
+      overflow: hidden;
+      transition: all 0.2s ease;
+      border: 1px solid rgba(230, 220, 200, 0.5);
+    }
+
+    /* subtle gradient header */
+    .hero {
+      background: linear-gradient(125deg, #2b3b2c 0%, #1f2e20 100%);
+      padding: 2.5rem 2rem 2rem 2rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(220, 210, 190, 0.3);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(235, 225, 190, 0.2);
+      backdrop-filter: blur(4px);
+      padding: 0.25rem 0.9rem;
+      border-radius: 60px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      color: #e8e2c7;
+      margin-bottom: 1.2rem;
+      border: 0.5px solid rgba(255, 245, 205, 0.4);
+    }
+
+    .hero h1 {
+      font-size: 2.7rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #FFF8E7, #E9E0C5);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.05);
+    }
+
+    .hero .effective {
+      color: #cfd7b7;
+      font-size: 0.9rem;
+      font-weight: 450;
+      margin-top: 0.5rem;
+      border-left: 2px solid #b7ba7a;
+      padding-left: 0.8rem;
+    }
+
+    .welcome-note {
+      background: #fefbf0;
+      margin: 1.5rem 2rem 0 2rem;
+      padding: 1.2rem 1.5rem;
+      border-radius: 32px;
+      font-size: 1rem;
+      color: #3b4a3b;
+      border: 1px solid #e8dfc8;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    }
+
+    .welcome-note p {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .welcome-note span.emoji-big {
+      font-size: 2rem;
+      filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
+    }
+
+    .content {
+      padding: 2rem 2rem 2.5rem 2rem;
+    }
+
+    /* premium section styling */
+    .policy-section {
+      margin-bottom: 2.2rem;
+      border-bottom: 1px solid #ece3d4;
+      padding-bottom: 1.6rem;
+    }
+
+    .policy-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 0.9rem;
+    }
+
+    .section-num {
+      background: #e9e1cf;
+      color: #3e4c3a;
+      width: 2rem;
+      height: 2rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1rem;
+      font-family: monospace;
+      box-shadow: inset 0 1px 0 #fff9ef, 0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    .section-title h2 {
+      font-size: 1.55rem;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      color: #2c3a2b;
+    }
+
+    .policy-text {
+      color: #2f3c2e;
+      font-size: 1rem;
+      margin-left: 0.6rem;
+      padding-left: 0.8rem;
+      border-left: 3px solid #cddbb2;
+    }
+
+    .policy-text p {
+      margin-bottom: 0.75rem;
+    }
+
+    .policy-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight {
+      background: #faf3e0;
+      border-radius: 18px;
+      padding: 0.1rem 0.4rem;
+      font-weight: 500;
+      color: #526e48;
+      display: inline-block;
+    }
+
+    .quiet-list {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .quiet-list li {
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+    }
+
+    .quiet-list li strong {
+      min-width: 100px;
+      font-weight: 600;
+      color: #4b6043;
+    }
+
+    .chip {
+      background: #ebe2cf;
+      color: #2b3929;
+      border-radius: 32px;
+      padding: 0.2rem 0.7rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      display: inline-block;
+    }
+
+    footer {
+      margin-top: 1rem;
+      background: #fbf8f0;
+      border-radius: 36px;
+      padding: 1.2rem 1.8rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #6a7159;
+      border-top: 1px solid #e7ddc7;
+    }
+
+    .contact-email {
+      font-family: monospace;
+      background: #e9e0cf;
+      padding: 0.2rem 0.7rem;
+      border-radius: 40px;
+      display: inline-block;
+      font-weight: 500;
+      color: #2b482b;
+    }
+
+    a {
+      color: #4b6b3e;
+      text-decoration: none;
+      border-bottom: 1px dotted #bfd3a5;
+      transition: 0.2s;
+    }
+
+    a:hover {
+      color: #244623;
+      border-bottom-color: #8aa77a;
+    }
+
+    @media (max-width: 650px) {
+      body {
+        padding: 1rem;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .content {
+        padding: 1.5rem;
+      }
+      .section-title h2 {
+        font-size: 1.35rem;
+      }
+      .quiet-list li strong {
+        min-width: 80px;
+      }
+    }
+
+    /* custom premium touches */
+    .digital-border {
+      box-shadow: 0 0 0 1px rgba(245, 235, 210, 0.8), 0 12px 28px -8px rgba(0, 0, 0, 0.1);
+    }
+    hr {
+      margin: 0.8rem 0;
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, #e7dbbc, transparent);
+    }
+  </style>
+</head>
+<body>
+<div class="privacy-card digital-border">
+  <div class="hero">
+    <div class="hero-badge">✨ your habits, your sanctuary ✨</div>
+    <h1>HabitBuddy <span style="font-weight: 400; letter-spacing: -0.5px;">✧</span> Privacy with soul</h1>
+    <div class="effective">🌱 effective from April 25, 2025 · last refreshed with care</div>
+  </div>
+
+  <div class="welcome-note">
+    <p>
+      <span class="emoji-big">🍃🧸</span>
+      <span>Hey there, habit shaper! We built HabitBuddy as a little peaceful corner — no data spies, no cloud lurking, no “your data is our product”. Everything you track stays right where it belongs: <strong>on your device, under your thumb</strong>. This policy is our honest promise, written like we’d tell a friend.</span>
+    </p>
+  </div>
+
+  <div class="content">
+    <!-- 1. data collection - rewritten and human -->
+    <div class="policy-section">
+      <div class="section-title">
+        <div class="section-num">①</div>
+        <h2>Zero-data harvest — seriously, zip.</h2>
+      </div>
+      <div class="policy-text">
+        <p>We <span class="highlight">do not collect, store, or share</span> any personal data. Not your name, email, IP address, or even a single habit snippet. All your streaks, checkmarks, journal notes, and goals live <strong>exclusively</strong> inside your device’s local storage. There’s no external database, no sneaky analytics server, no silent transmission. What you see in HabitBuddy is what stays with you — always.</p>
+        <p>◈ No sign-up walls. ◈ No “anonymous usage” shipped elsewhere. ◈ No tricks. Just you and your growth.</p>
+      </div>
+    </div>
+
+    <!-- 2. App Permissions with elegant breakdown -->
+    <div class="policy-section">
+      <div class="section-title">
+        <div class="section-num">②</div>
+        <h2>Simple permissions, full control</h2>
+      </div>
+      <div class="policy-text">
+        <p>HabitBuddy only requests access when it truly serves you — and never beyond.</p>
+        <ul class="quiet-list">
+          <li><strong>🔔 Notifications</strong> — gentle reminders for your micro-habits. You’re the boss: enable or disable anytime in your phone’s settings. We never send silent notifications or track when you receive them.</li>
+          <li><strong>📁 Storage (optional)</strong> — used <em>only</em> when you decide to export a backup (to keep your habit history safe) or import a previously saved file. Your data never leaves the device unless you actively share a backup via email, AirDrop, etc. That’s your choice, 100%.</li>
+        </ul>
+        <p>📌 No camera, no microphone, no location, no contacts — ever.</p>
+      </div>
+    </div>
+
+    <!-- 3. Analytics (local-first, human phrase) -->
+    <div class="policy-section">
+      <div class="section-title">
+        <div class="section-num">③</div>
+        <h2>Your progress, seen only by you</h2>
+      </div>
+      <div class="policy-text">
+        <p>Inside HabitBuddy, you’ll find beautiful charts & stats — “how many times did I meditate this month?” — all generated right on your device. We never receive that information. No third-party analytics (Firebase, Mixpanel, or any tracking SDK) is baked into the app. Zero crash-reporting that ties back to you. The only “analytics” that exist are the ones you look at for your own motivation.</p>
+        <p>💡 <em>In simple words: your habit journey is a private diary, not a live broadcast.</em></p>
+      </div>
+    </div>
+
+    <!-- 4. Third-Party transparency -->
+    <div class="policy-section">
+      <div class="section-title">
+        <div class="section-num">④</div>
+        <h2>No hidden guests, no trackers</h2>
+      </div>
+      <div class="policy-text">
+        <p>We don’t use advertising SDKs, attribution tools, or external analytics. That means no Facebook pixel, no Google Analytics, no Crashlytics quietly logging your device info. The only moment another app gets involved is when you deliberately tap <span class="chip">“Share HabitBuddy”</span> to tell a friend — then your device’s native share sheet appears, but we never see who you shared it with or what you wrote. Purely mechanical.</p>
+        <p>✅ No trackers. ✅ No creepy cookies. ✅ No “legitimate interest” loopholes.</p>
+      </div>
+    </div>
+
+    <!-- 5. Data security in a cozy yet real way -->
+    <div class="policy-section">
+      <div class="section-title">
+        <div class="section-num">⑤</div>
+        <h2>Keeping your little universe safe</h2>
+      </div>
+      <div class="policy-text">
+        <p>Your habit records are stored using your device’s native file system with standard sandboxing — no internet transfer = no man-in-the-middle risk. For extra peace of mind, we encourage you to use your phone’s built-in security: passcode, Face ID, or fingerprint lock. If your device is encrypted and locked, your HabitBuddy data gets the same protection. And because we never store anything on our servers, there’s simply nothing for “us” to leak.</p>
+        <p>🔒 <strong>A quick tip:</strong> periodically export an encrypted backup (via manual option) and keep it somewhere safe — you own your history completely.</p>
+      </div>
+    </div>
+
+    <!-- 6. Children's privacy with warm clarity -->
+    <div class="policy-section">
+      <div class="section-title">
+        <div class="section-num">⑥</div>
+        <h2>All ages welcome, no data mining</h2>
+      </div>
+      <div class="policy-text">
+        <p>HabitBuddy is designed to be friendly for everyone — kids, teens, parents, grandparents. We don’t knowingly collect any personal information from children under 13 (or any age, actually). Since we don’t collect names, emails, or any identifiers, there’s no “children’s data” to manage or misuse. Families can feel safe without invasive advertising or profiling. If you’re a parent and have any questions, just reach out (contacts below).</p>
+        <p>🌈 We believe building good habits should feel light and safe, regardless of how old you are.</p>
+      </div>
+    </div>
+
+    <!-- 7. Changes to This Policy (simple & honest) -->
+    <div class="policy-section">
+      <div class="section-title">
+        <div class="section-num">⑦</div>
+        <h2>Living document, openly updated</h2>
+      </div>
+      <div class="policy-text">
+        <p>From time to time, we might refine this Privacy Policy — to make it clearer, to align with new OS features, or to add more transparency. If we make a change, we’ll notify you via a friendly in-app notice (a small badge when you open HabitBuddy) and update the “Effective Date” above. We won’t ever reduce your privacy rights without your explicit consent. You can always find the latest version inside the app’s settings or on this screen.</p>
+      </div>
+    </div>
+
+    <!-- 8. Contact Us - human, premium and inviting -->
+    <div class="policy-section">
+      <div class="section-title">
+        <div class="section-num">⑧</div>
+        <h2>Talk to a human (yes, really)</h2>
+      </div>
+      <div class="policy-text">
+        <p>Your trust means everything. If something feels unclear, you’re curious about how local-first works, or you just want to say hello — drop us a line. We read every message.</p>
+        <p>📬 <strong>Email us at:</strong> <a href="mailto:habitbuddy.app@gmail.com" class="contact-email" style="background: #e2daca; border-bottom: none; padding: 0.2rem 0.9rem;">habitbuddy.app@gmail.com</a><br>
+        🕊️ We try to respond within 48 hours (often faster).</p>
+        <p><span class="chip">✉️ no automated privacy maze — just real replies</span></p>
+      </div>
+    </div>
+
+    <footer>
+      <div style="display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap; align-items: baseline;">
+        <span>🌿 HabitBuddy — tiny habit tracker, giant respect for privacy.</span>
+        <span>•</span>
+        <span>📱 100% on-device · no clouds · no ads</span>
+      </div>
+      <hr style="margin: 1rem 0 0.6rem 0;">
+      <div style="font-size: 0.75rem; opacity: 0.7;">Because your personal growth shouldn’t come with a privacy price tag.</div>
+    </footer>
+  </div>
+</div>
+</body>
+</html>
+```
